@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 생성</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="generate-project-container">
+            <div class="generate-project">
+                <img src="../assets/images/generate-project.png" alt="프로젝트 생성 아이콘">
+            </div>
+        </div>
+
+        <!-- 기존 프로젝트 관리 버튼 -->
+        <div class="manage-projects-container">
+            <img src="../assets/images/manage-project.png" alt="프로젝트 관리 아이콘">
+        </div>
+    </div>
+
+    <!-- 팝업 -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>프로젝트 생성</h2>
+                <button id="close-popup" class="close-btn">x</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="title">주제</label>
+                    <input type="text" id="title" name="title">
+                </div>
+            
+                <div class="form-group">
+                    <label for="objective">목적</label>
+                    <input type="text" id="objective" name="objective">
+                </div>
+            
+                <div class="form-group">
+                    <label for="members">인원</label>
+                    <input type="number" id="members" name="members">
+                </div>
+            
+                <div class="form-group2">
+                    <label for="file-upload">데이터 업로드</label>
+                    <input type="file" id="file-upload" name="file-upload">
+                </div>
+            
+                <button type="submit" class="submit-btn">생성하기</button>
+            </form>            
+        </div>
+    </div>
+
+    <script src="../assets/js/popup.js"></script>
+    <script src="../assets/js/loadMypage.js"></script>
+</body>
+</html>

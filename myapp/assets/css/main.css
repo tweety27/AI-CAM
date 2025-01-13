@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'SUIT';
+    src: url('../fonts/SUIT-Regular.otf') format('otf'),
+         url('../fonts/SUIT-ExtraBold.otf') format('otf'),
+         url('../fonts/SUIT-ExtraLight.otf') format('otf'),
+         url('../fonts/SUIT-Heavy.otf') format('otf'),
+         url('../fonts/SUIT-Light.otf') format('otf'),
+         url('../fonts/SUIT-Medium.otf') format('otf'),
+         url('../fonts/SUIT-SemiBold.otf') format('otf'),
+         url('../fonts/SUIT-Thin.otf') format('otf'),
+         url('../fonts/SUIT-Bold.otf') format('otf');
+}
+
+body {
+    background-color: #FFFDF6;
+}
+
+
+.generate-project-container {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.generate-project-container img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}
+
+.manage-projects-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.manage-projects:hover {
+    background-color: #555;
+}
+
+.manage-projects-container img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기존 프로젝트 관리</title>
+    <link rel="stylesheet" href="../assets/css/mypage.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header>
+            <button id="back-btn" class="back-btn">
+                <img src="../assets/images/back_button_icon.png" alt="뒤로가기" class="back-btn-icon">
+            </button>
+            <h1>기존 프로젝트 관리</h1>
+        </header>
+
+        <!-- 검색 필드 -->
+        <div class="search-bar">
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button class="search-btn">
+                <img src="../assets/images/search_icon.png" alt="검색" class="search-icon">
+            </button>
+        </div>
+
+        <!-- 테이블 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>주제</th>
+                    <th>목적</th>
+                    <th>인원</th>
+                    <th>진행상태</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>임직원 어쩌고 프로젝트</td>
+                    <td>어쩌고저쩌고룰위행ㅇㅇㅇ</td>
+                    <td>100</td>
+                    <td><span class="status complete">완료</span></td>
+                    <td><button class="delete-btn">🗑️</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>임직원 어쩌고 프로젝트</td>
+                    <td>어쩌고저쩌고룰위행ㅇㅇㅇ</td>
+                    <td>100</td>
+                    <td><span class="status in-progress">진행 중</span></td>
+                    <td><button class="delete-btn">🗑️</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../assets/js/mypage.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'SUIT';
+    src: url('../fonts/SUIT-Regular.otf') format('otf'),
+         url('../fonts/SUIT-ExtraBold.otf') format('otf'),
+         url('../fonts/SUIT-ExtraLight.otf') format('otf'),
+         url('../fonts/SUIT-Heavy.otf') format('otf'),
+         url('../fonts/SUIT-Light.otf') format('otf'),
+         url('../fonts/SUIT-Medium.otf') format('otf'),
+         url('../fonts/SUIT-SemiBold.otf') format('otf'),
+         url('../fonts/SUIT-Thin.otf') format('otf'),
+         url('../fonts/SUIT-Bold.otf') format('otf');
+}
+
+/* 기본 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 헤더 스타일 */
+header {
+    margin-bottom: 20px;
+}
+
+.project_detail1 {
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    gap: 3%; /* 요소 간 간격 */
+}
+
+.project_detail1 .back-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.project_detail1 .back-btn-icon {
+    width: 13px;
+    height: 26px;
+}
+
+.project_detail1 .status {
+    font-family: 'SUIT', SUIT-ExtraBold;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 26px;
+    background-color: #FDCDCD;
+    color: #B50000;
+    font-weight: bold;
+}
+
+.project_detail1 h1 {
+    font-family: 'SUIT', SUIT-ExtraBold;
+    font-size: 35pt;
+    font-weight: bold;
+    margin: 0;
+    color: #191F28;
+}
+
+.project-detail2 {
+    margin-top: 10px;
+}
+
+.project-detail2 p {
+    font-size: 32px;
+    font-family: 'SUIT', SUIT-Medium;
+    color: #191F28;
+}
+
+/* Iframe 스타일 */
+.iframe-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: black;
+}
+
+/* 탭 스타일 */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tab-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-img {
+    display: none;
+    width: 100px;
+    height: auto;
+}
+
+.tab-img.active {
+    display: inline;
+}
+
+.tab-button.active .tab-img.active {
+    display: inline;
+}
+
+.tab-button.active .tab-img.inactive {
+    display: none;
+}
+
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 20px;
+}
+
+thead th {
+    background-color: #f4f4f4;
+    text-align: left;
+    padding: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+}
+
+.status.in-progress {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status.complete {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* 완료 버튼 */
+.complete-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.complete-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.complete-button:hover {
+    background-color: #555;
+}
