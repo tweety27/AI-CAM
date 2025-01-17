@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header>
+            <button id="back-btn" class="back-btn" data-url="{% url 'main' %}">
+                <img src="{% static 'images/back_button_icon.png' %}" alt="뒤로가기" class="back-btn-icon">
+            </button>
+            <h1>기존 프로젝트 관리</h1>
+        </header>
+
+        <!-- 검색 필드 -->
+        <div class="search-bar">
+            <form method="get" action="{% url 'mypage' %}">
+                <input 
+                    type="text" 
+                    name="query" 
+                    placeholder="검색어를 입력하세요" 
+                    value="{{ request.GET.query }}">
+                <button type="submit" class="search-btn">
+                    <img src="{% static 'images/search_icon.png' %}" alt="검색" class="search-icon">
+                </button>
+            </form>
+        </div>
+
+
+
+        <!-- 테이블 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>주제</th>
+                    <th>목적</th>
+                    <th>인원</th>
+                    <th>진행상태</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if projects %}
+                    {% for project in projects %}
+                    <tr data-url="{% url 'project_detail' project.project_no %}">
+                        <td>{{ project.project_no }}</td>
+                        <td>{{ project.project_name }}</td>
+                        <td>{{ project.project_object }}</td>
+                        <td>{{ project.project_target_people }}</td>
+                        <td>
+                            <span class="status {% if project.project_status == '완료' %}complete{% else %}in-progress{% endif %}">
+                                {{ project.project_status }}
+                            </span>
+                        </td>
+                        <td><a href="{% url 'delete_project' project.project_no %}">🗑️</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6">프로젝트가 존재하지 않습니다.</td>
+                    </tr>
+                {% endif %}
+            </tbody>            
+        </table>
+    </div>
+
+    <script src="{% static 'js/mypage.js' %}"></script>
+</body>
+</html>

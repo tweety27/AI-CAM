@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select agent page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/select_agent.css' %}">
+</head>
+<body>
+    <header>
+        <button id="back-btn" class="back-btn" data-url="{% url 'main' %}">
+            <img src="{% static 'images/back_button_icon.png' %}" alt="뒤로가기" class="back-btn-icon">
+        </button>
+        <h1 class="title">분석 단계 설정</h1>
+    </header>
+
+    <input type="hidden" id="project_no" value="{{ project_no }}">
+
+    <div class="tabs">
+        <div class="tab active" data-tab="data-collection">데이터 수집</div>
+        <div class="tab" data-tab="data-preprocessing">데이터 전처리</div>
+        <div class="tab" data-tab="data-analysis">데이터 분석</div>
+    </div>
+
+    <div class="tab-content active" id="data-collection">
+        <div class="container">
+            <div class="items">
+                <h3>선택 가능한 항목</h3>
+                <ul id="available-items">
+                    <li data-item="네이버 카페 (특정 게시판)">네이버 카페 (특정 게시판)</li>
+                    <li data-item="네이버 카페 (전체 게시판)">네이버 카페 (전체 게시판)</li>
+                    <li data-item="네이버 지식인">네이버 지식인</li>
+                    <li data-item="네이버 블로그">네이버 블로그</li>
+                    <li data-item="유튜브">유튜브</li>
+                    <li data-item="브런치">브런치</li>
+                </ul>
+            </div>
+            <img class="arrow-image" src="{% static 'images/arrow.png' %}" alt="arrow">
+            <div class="items">
+                <h3>선택된 항목</h3>
+                <ul id="selected-items"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="data-preprocessing">
+        <div class="container">
+            <div class="items">
+                <h3>선택 가능한 항목</h3>
+                <ul id="available-items">
+                    <li data-item="결측치 제거">결측치 제거</li>
+                    <li data-item="중복 데이터 제거">중복 데이터 제거</li>
+                    <li data-item="특수문자 제거">특수문자 제거</li>
+                    <li data-item="불용어 처리">불용어 처리</li>
+                    <li data-item="광고글 제거">광고글 제거</li>
+                    <li data-item="컬럼 데이터 병합">컬럼 데이터 병합</li>
+                    <li data-item="문단 분리 (paragraph_data)">문단 분리 (paragraph_data)</li>
+                    <li data-item="문단 토큰화">문단 토큰화</li>
+                </ul>
+            </div>
+            <img class="arrow-image" src="{% static 'images/arrow.png' %}" alt="arrow">
+            <div class="items">
+                <h3>선택된 항목</h3>
+                <ul id="selected-items"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="data-analysis">
+        <div class="container">
+            <div class="items">
+                <h3>선택 가능한 항목</h3>
+                <ul id="available-items">
+                    <li data-item="doc2vec">doc2vec</li>
+                    <li data-item="ward clustering">ward clustering</li>
+                    <li data-item="LDA">LDA</li>
+                    <li data-item="TF-IDF">TF-IDF</li>
+                    <li data-item="기회영역분석">기회영역분석</li>
+                    <li data-item="Action-Paragraph Mapping">Action-Paragraph Mapping</li>
+                    <li data-item="Action Context 정의(LLM-API)">Action Context 정의(LLM-API)</li>
+                    <li data-item="Action Context 정의(SLM)">Action Context 정의(SLM)</li>
+                </ul>
+            </div>
+            <img class="arrow-image" src="{% static 'images/arrow.png' %}" alt="arrow">
+            <div class="items">
+                <h3>선택된 항목</h3>
+                <ul id="selected-items"></ul>
+            </div>
+        </div>
+        <!-- 완료 버튼 -->
+        <div class="complete-button-container">
+            <button class="complete-button">단계 설정 완료</button>
+        </div>
+    </div>
+    <script src="{% static 'js/select_agent.js' %}"></script>
+</body>
+</html>

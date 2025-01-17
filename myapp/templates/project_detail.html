@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project detail page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/project_detail.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- 프로젝트 헤더 -->
+        <header>
+            <div class="project_detail1">
+                <button id="back-btn" class="back-btn" data-url="{% url 'mypage' %}">
+                    <img src="{% static 'images/back_button_icon.png' %}" alt="뒤로가기" class="back-btn-icon">
+                </button>
+                <span class="status {% if project.project_status == '완료' %}complete{% else %}in-progress{% endif %}">
+                    {{ project.project_status }}
+                </span>
+                <h1>{{ project.project_name }}</h1>
+            </div>
+            <div class="project-detail2">
+                <p><strong>목적</strong> | {{ project.project_object }}</p>
+                <p><strong>인원</strong> | {{ project.project_target_people }}</p>
+            </div>
+        </header>
+
+        <!-- Iframe -->
+        <div class="iframe-container">
+            <iframe src="http://a572-112-154-77-26.ngrok-free.app/dashboard/3-ai-boucher-dashboard?project_no=1&action_no=1" frameborder="0"></iframe>
+        </div>
+
+        <!-- 탭 메뉴 -->
+        <div class="tabs">
+            <img src="{% static 'images/data-collection-active.png' %}"
+                data-default="{% static 'images/data-collection-default.png' %}"
+                data-active="{% static 'images/data-collection-active.png' %}"
+                alt="데이터 수집"
+                class="tab active"
+                data-stage="수집">
+            <img src="{% static 'images/data-processing-default.png' %}"
+                data-default="{% static 'images/data-processing-default.png' %}"
+                data-active="{% static 'images/data-processing-active.png' %}"
+                alt="데이터 전처리"
+                class="tab"
+                data-stage="전처리">
+            <img src="{% static 'images/data-analysis-default.png' %}"
+                data-default="{% static 'images/data-analysis-default.png' %}"
+                data-active="{% static 'images/data-analysis-active.png' %}"
+                alt="데이터 분석"
+                class="tab"
+                data-stage="분석">
+        </div>
+
+        
+
+        <!-- 데이터 수집 단계 -->
+        <div id="data-수집" class="tab-content active">
+            <table>
+                <tbody>
+                    {% for progress in data_collection %}
+                    <tr>
+                        <td>{{ progress.standard_name }}</td>
+                        <td>
+                            <span class="status {% if progress.stage_status == '진행전' %}not-started
+                                              {% elif progress.stage_status == '진행중' %}in-progress
+                                              {% elif progress.stage_status == '완료' %}complete
+                                              {% else %}unknown{% endif %}">
+                                {{ progress.stage_status }}
+                            </span>
+                        </td>                        
+                        <td>
+                            {% if progress.stage_start_time %}
+                                {{ progress.stage_start_time|date:"Y.m.d" }} ~ {{ progress.stage_end_time|date:"Y.m.d" }}
+                            {% else %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if progress.standard_link %}
+                            <a href="http://{{ progress.standard_link }}?projectno={{ progress.project_no }}&progressid={{ progress.progress_id }}" target="_blank">
+                                    바로가기
+                                </a>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No data available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+
+        <!-- 데이터 전처리 단계 -->
+        <div id="data-전처리" class="tab-content">
+            <table>
+                <tbody>
+                    {% for progress in data_preprocessing %}
+                    <tr>
+                        <td>{{ progress.standard_name }}</td>
+                        <td>
+                            <span class="status {% if progress.stage_status == '진행전' %}not-started
+                                              {% elif progress.stage_status == '진행중' %}in-progress
+                                              {% elif progress.stage_status == '완료' %}complete
+                                              {% else %}unknown{% endif %}">
+                                {{ progress.stage_status }}
+                            </span>
+                        </td>                        
+                        <td>
+                            {% if progress.stage_start_time and progress.stage_end_time %}
+                                {{ progress.stage_start_time|date:"Y.m.d" }} ~ {{ progress.stage_end_time|date:"Y.m.d" }}
+                            {% else %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if progress.standard_link %}
+                                <a href="http://{{ progress.standard_link }}?projectno={{ progress.project_no }}&progressid={{ progress.progress_id }}" target="_blank">
+                                    바로가기
+                                </a>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 데이터 분석 단계 -->
+        <div id="data-분석" class="tab-content">
+            <table>
+                <tbody>
+                    {% for progress in data_analysis %}
+                    <tr>
+                        <td>{{ progress.standard_name }}</td>
+                        <td>
+                            <span class="status {% if progress.stage_status == '진행전' %}not-started
+                                              {% elif progress.stage_status == '진행중' %}in-progress
+                                              {% elif progress.stage_status == '완료' %}complete
+                                              {% else %}unknown{% endif %}">
+                                {{ progress.stage_status }}
+                            </span>
+                        </td>                        
+                        <td>
+                            {% if progress.stage_start_time and progress.stage_end_time %}
+                                {{ progress.stage_start_time|date:"Y.m.d" }} ~ {{ progress.stage_end_time|date:"Y.m.d" }}
+                            {% else %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if progress.standard_link %}
+                                <a href="http://{{ progress.standard_link }}?projectno={{ progress.project_no }}&progressid={{ progress.progress_id }}" target="_blank">    
+                                    바로가기
+                                </a>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- 완료 버튼 -->
+        <div class="complete-button-container">
+            <button class="complete-button {% if project.project_status == '완료' %}complete{% else %}in-progress{% endif %}" 
+                    id="complete-button"
+                    {% if project.project_status == '완료' %}disabled{% endif %}>
+                {% if project.project_status == '완료' %}
+                    완료된 프로젝트
+                {% else %}
+                    프로젝트 진행 완료하기
+                {% endif %}
+            </button>
+        </div>               
+    </div>
+
+    <script src="{% static 'js/project_detail.js' %}"></script>
+</body>
+</html>
